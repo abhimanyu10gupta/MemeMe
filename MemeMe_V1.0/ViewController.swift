@@ -12,22 +12,40 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
-    @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
+    @IBOutlet weak var topTextField: UITextField!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
     
-    let memeTextAttributes = [
-        NSForegroundColorAttributeName : UIColor.black,
-        NSStrokeColorAttributeName : UIColor.black,
-        NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 72)!,
-        NSStrokeWidthAttributeName : 3.0
-    ] as [String : Any]
+    let topTextFieldDelegate = TopTextFieldDelegate()
+    let bottomTextFieldDelegate = BottomTextFieldDelegate()
+    
+    
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        topTextField.defaultTextAttributes = memeTextAttributes
-        bottomTextField.defaultTextAttributes = memeTextAttributes
+        
+        func textAttributes (_ textField : UITextField ) {
+        let memeTextAttributes = [
+            NSStrokeColorAttributeName : UIColor.white,
+            NSForegroundColorAttributeName : UIColor.white,
+            NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 72)!,
+            NSStrokeWidthAttributeName : 3.0
+            ] as [String : Any]
+        
+            
+            textField.defaultTextAttributes = memeTextAttributes
+            textField.textAlignment = .center
+            textField.textColor = UIColor.white
+        }
+
         topTextField.text = "TOP"
         bottomTextField.text = "BOTTOM"
+        textAttributes(topTextField)
+        textAttributes(bottomTextField)
+        topTextField.delegate = topTextFieldDelegate
+        bottomTextField.delegate = bottomTextFieldDelegate
+        print("imagePicker Image is: ", imagePickerView.image)
     }
     
     
@@ -35,6 +53,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewWillAppear(animated)
         subscribeToKeyboardNotifications()
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)
+        shareButton.isEnabled = false
+        cancelButton.isEnabled = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -53,6 +73,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func keyboardWillShow(notification: NSNotification) {
+        cancelButton.isEnabled = true
         if bottomTextField.isFirstResponder {
             view.frame.origin.y = getKeyboardHeight(notification: notification) * -1
         }
@@ -75,18 +96,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imagePickerView.image = image
         }
+        cancelButton.isEnabled = true
         dismiss(animated: true, completion: nil)
-    }
-    
-    func textFieldDidBeginEditing(_ TextField: UITextField) {
-        topTextField.text = ""
-        bottomTextField.text = ""
-
-    }
-    
-   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.resignFirstResponder()
-        return false
     }
     
     @IBAction func pickAnImageFromCamera(_ sender: AnyObject) {
@@ -103,8 +114,20 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
     }
     
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
+
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
+    @IBAction func cancel(_ sender: AnyObject) {
+        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+            dismiss(animated: true, completion: nil)
+        }
+        viewDidLoad()
+        cancelButton.isEnabled = false
+        resignFirstResponder()
+        imagePickerView.image = nil
+}
 
 }

@@ -20,25 +20,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iPw-K0-H0l"/>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XeD-dX-Cho">
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" usesAttributedText="YES" allowsEditingTextAttributes="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XeD-dX-Cho">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="71" id="aik-9L-xrO"/>
+                                </constraints>
+                                <attributedString key="attributedText"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Agy-VL-HxX">
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" keyboardAppearance="alert"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" usesAttributedText="YES" allowsEditingTextAttributes="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5zU-AN-hQ2">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="59" id="gKS-Wf-YDe"/>
+                                </constraints>
+                                <attributedString key="attributedText"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ilc-lN-oVg">
                                 <items>
                                     <barButtonItem systemItem="action" id="4aN-tc-tyT"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="uV9-no-9BB"/>
-                                    <barButtonItem systemItem="cancel" id="aKG-ME-9rL"/>
+                                    <barButtonItem systemItem="cancel" id="aKG-ME-9rL">
+                                        <connections>
+                                            <action selector="cancel:" destination="BYZ-38-t0r" id="FwP-Zl-mkI"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFit" semanticContentAttribute="spatial" translatesAutoresizingMaskIntoConstraints="NO" id="QHd-XN-9YT">
@@ -59,7 +63,7 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="iPw-K0-H0l" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="3BZ-1d-kAK"/>
                             <constraint firstItem="iPw-K0-H0l" firstAttribute="bottom" secondItem="QHd-XN-9YT" secondAttribute="bottom" id="4Mo-fY-P4Z"/>
@@ -68,13 +72,13 @@
                             <constraint firstItem="iPw-K0-H0l" firstAttribute="centerX" secondItem="Ilc-lN-oVg" secondAttribute="centerX" id="9Hh-Wa-FIp"/>
                             <constraint firstItem="iPw-K0-H0l" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="CW3-PD-vgT"/>
                             <constraint firstItem="iPw-K0-H0l" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="ENz-NO-ldY"/>
+                            <constraint firstItem="QHd-XN-9YT" firstAttribute="top" secondItem="XeD-dX-Cho" secondAttribute="bottom" constant="11" id="FKI-EB-Chi"/>
                             <constraint firstItem="QHd-XN-9YT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="JWc-PF-kA3"/>
+                            <constraint firstItem="XeD-dX-Cho" firstAttribute="leading" secondItem="5zU-AN-hQ2" secondAttribute="leading" id="Jmi-AY-otf"/>
                             <constraint firstItem="iPw-K0-H0l" firstAttribute="top" secondItem="Ilc-lN-oVg" secondAttribute="top" id="O4E-2u-Es8"/>
-                            <constraint firstItem="iPw-K0-H0l" firstAttribute="centerX" secondItem="Agy-VL-HxX" secondAttribute="centerX" id="XuS-ON-Bb2"/>
-                            <constraint firstItem="Agy-VL-HxX" firstAttribute="centerX" secondItem="Ilc-lN-oVg" secondAttribute="centerX" id="bSY-Vc-GYh"/>
-                            <constraint firstItem="Agy-VL-HxX" firstAttribute="centerX" secondItem="QHd-XN-9YT" secondAttribute="centerX" id="klK-mj-OcZ"/>
-                            <constraint firstItem="Agy-VL-HxX" firstAttribute="top" secondItem="Ilc-lN-oVg" secondAttribute="bottom" constant="20" id="msa-LK-6QS"/>
-                            <constraint firstItem="QHd-XN-9YT" firstAttribute="top" secondItem="XeD-dX-Cho" secondAttribute="bottom" constant="19" id="nZw-oj-0F6"/>
+                            <constraint firstItem="5zU-AN-hQ2" firstAttribute="top" secondItem="Ilc-lN-oVg" secondAttribute="bottom" constant="12" id="T67-3L-dis"/>
+                            <constraint firstItem="XeD-dX-Cho" firstAttribute="leading" secondItem="iPw-K0-H0l" secondAttribute="leading" id="fW1-9P-8cG"/>
+                            <constraint firstItem="5zU-AN-hQ2" firstAttribute="trailing" secondItem="XeD-dX-Cho" secondAttribute="trailing" id="miu-pN-kPR"/>
                             <constraint firstItem="iPw-K0-H0l" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="pGH-es-9qq"/>
                             <constraint firstItem="iPw-K0-H0l" firstAttribute="centerX" secondItem="QHd-XN-9YT" secondAttribute="centerX" id="pPg-iJ-FUv"/>
                         </constraints>
@@ -82,13 +86,15 @@
                     <connections>
                         <outlet property="bottomTextField" destination="XeD-dX-Cho" id="t8n-uT-FaQ"/>
                         <outlet property="cameraButton" destination="2xP-hX-meF" id="hWX-Fq-79X"/>
+                        <outlet property="cancelButton" destination="aKG-ME-9rL" id="rsA-Hx-0DV"/>
                         <outlet property="imagePickerView" destination="iPw-K0-H0l" id="o7M-7H-ncM"/>
-                        <outlet property="topTextField" destination="Agy-VL-HxX" id="hjR-Cy-6Ku"/>
+                        <outlet property="shareButton" destination="4aN-tc-tyT" id="i5u-lw-yxE"/>
+                        <outlet property="topTextField" destination="5zU-AN-hQ2" id="buv-Bk-QdS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="106" y="188"/>
+            <point key="canvasLocation" x="104.8" y="187.55622188905548"/>
         </scene>
     </scenes>
 </document>
