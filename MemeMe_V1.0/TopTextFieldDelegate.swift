@@ -19,9 +19,6 @@ class TopTextFieldDelegate : NSObject, UITextFieldDelegate {
         if TextField.text == "TOP" {
             TextField.text = ""
         }
-        if TextField.text == "BOTTOM"{
-            TextField.text = ""
-    }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

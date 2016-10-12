@@ -8,6 +8,14 @@
 
 import UIKit
 
+
+struct Meme {
+    var topTextField: String?
+    var bottomTextField: String?
+    var originalImage: UIImage?
+    let memedImage: UIImage!
+}
+
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var imagePickerView: UIImageView!
@@ -16,6 +24,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
+    @IBOutlet weak var topToolbar: UIToolbar!
+    @IBOutlet weak var bottomToolbar: UIToolbar!
     
     let topTextFieldDelegate = TopTextFieldDelegate()
     let bottomTextFieldDelegate = BottomTextFieldDelegate()
@@ -29,7 +39,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let memeTextAttributes = [
             NSStrokeColorAttributeName : UIColor.white,
             NSForegroundColorAttributeName : UIColor.white,
-            NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 72)!,
+            NSFontAttributeName : UIFont(name: "Impact", size: 40)!,
             NSStrokeWidthAttributeName : 3.0
             ] as [String : Any]
         
@@ -45,7 +55,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         textAttributes(bottomTextField)
         topTextField.delegate = topTextFieldDelegate
         bottomTextField.delegate = bottomTextFieldDelegate
-        print("imagePicker Image is: ", imagePickerView.image)
     }
     
     
@@ -54,7 +63,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         subscribeToKeyboardNotifications()
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)
         shareButton.isEnabled = false
-        cancelButton.isEnabled = false
+        
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -96,7 +106,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imagePickerView.image = image
         }
-        cancelButton.isEnabled = true
         dismiss(animated: true, completion: nil)
     }
     
@@ -114,12 +123,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
     }
     
-
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
     @IBAction func cancel(_ sender: AnyObject) {
         func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
             dismiss(animated: true, completion: nil)
@@ -128,6 +131,40 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         cancelButton.isEnabled = false
         resignFirstResponder()
         imagePickerView.image = nil
-}
-
+    }
+    
+    @IBAction func share(_ sender: AnyObject) {
+        let image = generateMemedImage()
+        let controller = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        
+        self.present(controller, animated: true, completion: nil)
+        controller.completionHandler = {(activityType, completed:Bool) in
+            if completed {
+                self.save()
+            }
+            controller.dismiss(animated: true, completion: nil)
+            return
+        }
+    }
+    
+    func save() {
+        _ = Meme( topTextField: topTextField.text!, bottomTextField: bottomTextField.text, originalImage:
+            imagePickerView.image, memedImage: generateMemedImage())
+    }
+    
+    func generateMemedImage() -> UIImage {
+        
+        topToolbar.isHidden = true
+        bottomToolbar.isHidden = true
+        
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        topToolbar.isHidden = false
+        bottomToolbar.isHidden = false
+        
+        return memedImage
+    }
 }
