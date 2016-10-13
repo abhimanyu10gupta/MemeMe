@@ -19,11 +19,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var topToolbar: UIToolbar!
     @IBOutlet weak var bottomToolbar: UIToolbar!
     
-    let topTextFieldDelegate = TextFieldDelegate()
-    let bottomTextFieldDelegate = TextFieldDelegate()
-    
-    
-   
+    let textFieldDelegate = TextFieldDelegate()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,8 +28,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         bottomTextField.text = "BOTTOM"
         textAttributes(topTextField)
         textAttributes(bottomTextField)
-        topTextField.delegate = topTextFieldDelegate
-        bottomTextField.delegate = bottomTextFieldDelegate
     }
     
     
@@ -61,6 +56,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         textField.defaultTextAttributes = memeTextAttributes
         textField.textAlignment = .center
         textField.textColor = UIColor.white
+        textField.delegate = textFieldDelegate
     }
     
     func subscribeToKeyboardNotifications() {
