@@ -8,14 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		29C6A0BF1D9CEE520028C991 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C6A0BE1D9CEE520028C991 /* AppDelegate.swift */; };
-		29C6A0C11D9CEE520028C991 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C6A0C01D9CEE520028C991 /* ViewController.swift */; };
+		29C6A0C11D9CEE520028C991 /* MemeEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C6A0C01D9CEE520028C991 /* MemeEditorViewController.swift */; };
 		29C6A0C41D9CEE520028C991 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29C6A0C21D9CEE520028C991 /* Main.storyboard */; };
 		29C6A0C61D9CEE520028C991 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29C6A0C51D9CEE520028C991 /* Assets.xcassets */; };
 		29C6A0D41D9CEE520028C991 /* MemeMe_V1_0Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C6A0D31D9CEE520028C991 /* MemeMe_V1_0Tests.swift */; };
 		29C6A0DF1D9CEE520028C991 /* MemeMe_V1_0UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C6A0DE1D9CEE520028C991 /* MemeMe_V1_0UITests.swift */; };
-		29C6A0ED1DA08D740028C991 /* TopTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C6A0EC1DA08D740028C991 /* TopTextFieldDelegate.swift */; };
-		29C6A0EF1DA08E6B0028C991 /* BottomTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C6A0EE1DA08E6B0028C991 /* BottomTextFieldDelegate.swift */; };
+		29C6A0ED1DA08D740028C991 /* TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C6A0EC1DA08D740028C991 /* TextFieldDelegate.swift */; };
 		29C6A1691DADD5460028C991 /* Impact.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 29C6A1681DADD5460028C991 /* Impact.ttf */; };
+		29C6A16D1DAF01030028C991 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C6A16C1DAF01030028C991 /* Meme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +38,7 @@
 /* Begin PBXFileReference section */
 		29C6A0BB1D9CEE520028C991 /* MemeMe_V1.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemeMe_V1.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29C6A0BE1D9CEE520028C991 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		29C6A0C01D9CEE520028C991 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		29C6A0C01D9CEE520028C991 /* MemeEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeEditorViewController.swift; sourceTree = "<group>"; };
 		29C6A0C31D9CEE520028C991 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		29C6A0C51D9CEE520028C991 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		29C6A0CA1D9CEE520028C991 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -48,9 +48,9 @@
 		29C6A0DA1D9CEE520028C991 /* MemeMe_V1.0UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MemeMe_V1.0UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		29C6A0DE1D9CEE520028C991 /* MemeMe_V1_0UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeMe_V1_0UITests.swift; sourceTree = "<group>"; };
 		29C6A0E01D9CEE520028C991 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		29C6A0EC1DA08D740028C991 /* TopTextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopTextFieldDelegate.swift; sourceTree = "<group>"; };
-		29C6A0EE1DA08E6B0028C991 /* BottomTextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomTextFieldDelegate.swift; sourceTree = "<group>"; };
+		29C6A0EC1DA08D740028C991 /* TextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldDelegate.swift; sourceTree = "<group>"; };
 		29C6A1681DADD5460028C991 /* Impact.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Impact.ttf; sourceTree = "<group>"; };
+		29C6A16C1DAF01030028C991 /* Meme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Meme.swift; path = ../Meme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,9 +103,9 @@
 			isa = PBXGroup;
 			children = (
 				29C6A0BE1D9CEE520028C991 /* AppDelegate.swift */,
-				29C6A0C01D9CEE520028C991 /* ViewController.swift */,
-				29C6A0EC1DA08D740028C991 /* TopTextFieldDelegate.swift */,
-				29C6A0EE1DA08E6B0028C991 /* BottomTextFieldDelegate.swift */,
+				29C6A0C01D9CEE520028C991 /* MemeEditorViewController.swift */,
+				29C6A0EC1DA08D740028C991 /* TextFieldDelegate.swift */,
+				29C6A16C1DAF01030028C991 /* Meme.swift */,
 				29C6A0C21D9CEE520028C991 /* Main.storyboard */,
 				29C6A0C51D9CEE520028C991 /* Assets.xcassets */,
 				29C6A0CA1D9CEE520028C991 /* Info.plist */,
@@ -274,9 +274,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29C6A0ED1DA08D740028C991 /* TopTextFieldDelegate.swift in Sources */,
-				29C6A0EF1DA08E6B0028C991 /* BottomTextFieldDelegate.swift in Sources */,
-				29C6A0C11D9CEE520028C991 /* ViewController.swift in Sources */,
+				29C6A0ED1DA08D740028C991 /* TextFieldDelegate.swift in Sources */,
+				29C6A16D1DAF01030028C991 /* Meme.swift in Sources */,
+				29C6A0C11D9CEE520028C991 /* MemeEditorViewController.swift in Sources */,
 				29C6A0BF1D9CEE520028C991 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

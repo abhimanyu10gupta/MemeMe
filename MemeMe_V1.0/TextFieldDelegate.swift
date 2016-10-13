@@ -1,5 +1,5 @@
 //
-//  BottomTextFieldDelegate.swift
+//  TextFieldDelegate.swift
 //  MemeMe_V1.0
 //
 //  Created by Aabhimanyu Gupta on 02/10/16.
@@ -9,15 +9,14 @@
 import Foundation
 import UIKit
 
-class BottomTextFieldDelegate : NSObject, UITextFieldDelegate {
+class TextFieldDelegate : NSObject, UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         return true
     }
     
-    
     func textFieldDidBeginEditing(_ TextField: UITextField) {
-        if TextField.text == "BOTTOM" {
+        if (TextField.text == "TOP" || TextField.text == "BOTTOM") {
             TextField.text = ""
         }
     }

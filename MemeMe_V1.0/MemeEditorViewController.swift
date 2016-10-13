@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MemeEditorViewController.swift
 //  MemeMe_V1.0
 //
 //  Created by Aabhimanyu Gupta on 29/09/16.
@@ -8,15 +8,7 @@
 
 import UIKit
 
-
-struct Meme {
-    var topTextField: String?
-    var bottomTextField: String?
-    var originalImage: UIImage?
-    let memedImage: UIImage!
-}
-
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
@@ -27,27 +19,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var topToolbar: UIToolbar!
     @IBOutlet weak var bottomToolbar: UIToolbar!
     
-    let topTextFieldDelegate = TopTextFieldDelegate()
-    let bottomTextFieldDelegate = BottomTextFieldDelegate()
+    let topTextFieldDelegate = TextFieldDelegate()
+    let bottomTextFieldDelegate = TextFieldDelegate()
     
     
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        func textAttributes (_ textField : UITextField ) {
-        let memeTextAttributes = [
-            NSStrokeColorAttributeName : UIColor.white,
-            NSForegroundColorAttributeName : UIColor.white,
-            NSFontAttributeName : UIFont(name: "Impact", size: 40)!,
-            NSStrokeWidthAttributeName : 3.0
-            ] as [String : Any]
-        
-            
-            textField.defaultTextAttributes = memeTextAttributes
-            textField.textAlignment = .center
-            textField.textColor = UIColor.white
-        }
 
         topTextField.text = "TOP"
         bottomTextField.text = "BOTTOM"
@@ -72,9 +50,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         unsubscribeFromKeyboardNotifications()
     }
     
+    func textAttributes (_ textField : UITextField ) {
+        let memeTextAttributes = [
+            NSStrokeColorAttributeName : UIColor.black,
+            NSForegroundColorAttributeName : UIColor.white,
+            NSFontAttributeName : UIFont(name: "Impact", size: 40)!,
+            NSStrokeWidthAttributeName : -3.0
+            ] as [String : Any]
+        
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.textAlignment = .center
+        textField.textColor = UIColor.white
+    }
+    
     func subscribeToKeyboardNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MemeEditorViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MemeEditorViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     func unsubscribeFromKeyboardNotifications() {
@@ -104,23 +95,30 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            imagePickerView.contentMode = UIViewContentMode.scaleAspectFit
             imagePickerView.image = image
         }
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func pickAnImageFromCamera(_ sender: AnyObject) {
+    func pickAnImage(type : Int) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         present(imagePicker, animated: true, completion: nil)
+        if type == 1 {
+            imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        }
+        if type == 2 {
         imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+        }
+    }
+    
+    @IBAction func pickAnImageFromCamera(_ sender: AnyObject) {
+        pickAnImage(type: 2)
     }
     
     @IBAction func pickAnImageFromAlbum(_ sender: AnyObject) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        present(imagePicker, animated: true, completion: nil)
-        imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        pickAnImage(type: 1)
     }
     
     @IBAction func cancel(_ sender: AnyObject) {
