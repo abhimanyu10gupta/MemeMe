@@ -1,6 +1,6 @@
 //
 //  Meme.swift
-//  MemeMe_V1.0
+//  MemeMe
 //
 //  Created by Aabhimanyu Gupta on 13/10/16.
 //  Copyright © 2016 Aabhimanyu Gupta. All rights reserved.
