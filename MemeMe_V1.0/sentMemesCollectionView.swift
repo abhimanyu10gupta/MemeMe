@@ -11,10 +11,15 @@ import UIKit
 
 class SentMemesCollectionView : UICollectionViewController {
     
+    @IBOutlet weak var addMeme: UIBarButtonItem!
+    
     var memes: [Meme] {
         return (UIApplication.shared.delegate as! AppDelegate).memes
     }
-    
+    override func viewDidLoad() {
+        
+    }
+
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.memes.count
     }
@@ -27,4 +32,9 @@ class SentMemesCollectionView : UICollectionViewController {
         
         return cell
     }
+    @IBAction func MemeEditor(_ sender: AnyObject) {
+        let controller = self.storyboard?.instantiateViewController(withIdentifier: "MemeEditorViewController") as! MemeEditorViewController
+        present(controller, animated: true, completion: nil)
+    }
+    
 }

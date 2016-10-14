@@ -10,6 +10,12 @@ import Foundation
 import UIKit
 
 class SentMemesTableView : UITableViewController {
+
+    @IBOutlet weak var addMeme: UIBarButtonItem!
+    
+    override func viewDidLoad() {
+    
+    }
     
     var memes: [Meme] {
         return (UIApplication.shared.delegate as! AppDelegate).memes
@@ -27,5 +33,11 @@ class SentMemesTableView : UITableViewController {
         cell?.textLabel?.text = ("\(meme.topTextField) + \(meme.bottomTextField)")
         
         return cell!
+    }
+
+
+    @IBAction func MemeEditor(_ sender: AnyObject) {
+        let controller = self.storyboard?.instantiateViewController(withIdentifier: "MemeEditorViewController") as! MemeEditorViewController
+        present(controller, animated: true, completion: nil)
     }
 }

@@ -83,7 +83,16 @@
                             <outlet property="delegate" destination="Y1R-d4-HKq" id="76S-Vd-VMa"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="0Ba-e9-So2"/>
+                    <navigationItem key="navigationItem" id="0Ba-e9-So2">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="3C7-aa-wjT">
+                            <connections>
+                                <action selector="MemeEditor:" destination="Y1R-d4-HKq" id="HjG-NO-9Dy"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addMeme" destination="3C7-aa-wjT" id="xw3-3O-DTA"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="20a-TC-Wnl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -104,7 +113,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gbK-l0-Aa7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-817" y="188"/>
+            <point key="canvasLocation" x="-819" y="277"/>
         </scene>
         <!--Sent Memes Table View-->
         <scene sceneID="xw0-Cv-3x7">
@@ -129,16 +138,25 @@
                             <outlet property="delegate" destination="asR-SY-6Sf" id="LBv-7R-2vN"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="1sS-ze-69E"/>
+                    <navigationItem key="navigationItem" id="1sS-ze-69E">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="W5j-T4-u9v">
+                            <connections>
+                                <action selector="MemeEditor:" destination="asR-SY-6Sf" id="aCu-VA-ieo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addMeme" destination="W5j-T4-u9v" id="pjo-5K-AxK"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5pf-mG-zJY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="236" y="188"/>
+            <point key="canvasLocation" x="236" y="277"/>
         </scene>
-        <!--Meme Editor View Controller-->
+        <!--MemeEditorViewController-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MemeEditorViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MemeEditorViewController" title="MemeEditorViewController" id="BYZ-38-t0r" customClass="MemeEditorViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
