@@ -118,8 +118,8 @@
 				29C6A1741DB0BBE40028C991 /* SentMemesTableView.swift */,
 				29C6A1721DB0BA810028C991 /* sentMemesCollectionView.swift */,
 				29C6A1761DB0C3920028C991 /* MemeCollectionViewCell.swift */,
-				29C6A0CA1D9CEE520028C991 /* Info.plist */,
 				29C6A17A1DB5B9700028C991 /* MemeDetailViewController.swift */,
+				29C6A0CA1D9CEE520028C991 /* Info.plist */,
 				29C6A0C51D9CEE520028C991 /* Assets.xcassets */,
 			);
 			path = MemeMe_V1.0;

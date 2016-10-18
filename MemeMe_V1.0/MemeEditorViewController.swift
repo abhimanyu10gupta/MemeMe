@@ -161,8 +161,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         let appDelegate = object as! AppDelegate
         appDelegate.memes.append(meme)
         self.dismiss(animated: true, completion: nil)
-        print ("memes are \(appDelegate.memes.count)")
-        
     }
     
     func generateMemedImage() -> UIImage {

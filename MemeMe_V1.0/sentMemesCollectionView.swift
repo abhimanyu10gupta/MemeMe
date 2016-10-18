@@ -18,7 +18,6 @@ class SentMemesCollectionView : UICollectionViewController {
         return (UIApplication.shared.delegate as! AppDelegate).memes
     }
     override func viewDidLoad() {
-        print("memes are : \(memes.count)")
         collectionView?.reloadData()
         let space : CGFloat = 2.0
         let hDimension = (self.view.frame.size.height - (2 * space)) / 6.0
