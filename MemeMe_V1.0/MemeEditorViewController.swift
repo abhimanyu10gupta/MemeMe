@@ -50,6 +50,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         } else {
             shareButton.isEnabled = true
         }
+        imagePickerView.contentMode = UIViewContentMode.scaleAspectFit
     }
     
     override func viewWillDisappear(_ animated: Bool) {
