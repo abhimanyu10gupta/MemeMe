@@ -17,6 +17,8 @@ class MemeDetailViewController : UIViewController {
     
     var meme : Meme!
     
+    var index : IndexPath?
+    
     @IBOutlet weak var detailImagePickerView: UIImageView!
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,11 +41,10 @@ class MemeDetailViewController : UIViewController {
     
     func editMeme() {
         let controller = self.storyboard?.instantiateViewController(withIdentifier: "MemeEditorViewController") as! MemeEditorViewController
-        print(controller.bottomTextField?.text)
-        print(self.meme)
-        controller.bottomTextField?.text? = self.meme.bottomTextField!
-        controller.topTextField?.text? = self.meme.topTextField!
-        controller.imagePickerView?.image? = self.meme.originalImage!
+
+        controller.editBottomText = meme.bottomTextField
+        controller.editTopText = meme.topTextField
+        controller.editImage = meme.originalImage
         
         present(controller, animated: true, completion: nil)
     }

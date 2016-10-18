@@ -21,11 +21,21 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     let textFieldDelegate = TextFieldDelegate()
 
+    var editBottomText : String?
+    var editTopText : String?
+    var editImage : UIImage?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        topTextField.text = "TOP"
-        bottomTextField.text = "BOTTOM"
+        if editTopText == nil {
+            topTextField.text = "TOP"
+            bottomTextField.text = "BOTTOM"
+        } else {
+            topTextField.text = editTopText
+            bottomTextField.text = editBottomText
+            imagePickerView.image = editImage
+        }
+        
         textAttributes(topTextField)
         textAttributes(bottomTextField)
     }
@@ -144,8 +154,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     func save() {
-        let meme = Meme( topTextField: topTextField.text!, bottomTextField: bottomTextField.text, originalImage:
-            imagePickerView.image, memedImage: generateMemedImage())
+        let meme = Meme( topTextField: topTextField.text!, bottomTextField: bottomTextField.text!, originalImage:
+            imagePickerView.image!, memedImage: generateMemedImage())
         
         let object = UIApplication.shared.delegate
         let appDelegate = object as! AppDelegate
