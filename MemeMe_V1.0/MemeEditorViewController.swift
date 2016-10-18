@@ -35,9 +35,11 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         super.viewWillAppear(animated)
         subscribeToKeyboardNotifications()
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)
-        shareButton.isEnabled = false
-        
-
+        if imagePickerView.image == nil {
+            shareButton.isEnabled = false
+        } else {
+            shareButton.isEnabled = true
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -121,6 +123,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
             dismiss(animated: true, completion: nil)
         }
+        dismiss(animated: true, completion: nil)
         viewDidLoad()
         cancelButton.isEnabled = false
         resignFirstResponder()
@@ -135,9 +138,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         controller.completionHandler = {(activityType, completed:Bool) in
             if completed {
                 self.save()
+                controller.dismiss(animated: true, completion: nil)
             }
-            controller.dismiss(animated: true, completion: nil)
-            return
         }
     }
     
@@ -148,6 +150,9 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         let object = UIApplication.shared.delegate
         let appDelegate = object as! AppDelegate
         appDelegate.memes.append(meme)
+        self.dismiss(animated: true, completion: nil)
+        print ("memes are \(appDelegate.memes.count)")
+        
     }
     
     func generateMemedImage() -> UIImage {

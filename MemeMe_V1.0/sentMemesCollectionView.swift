@@ -17,24 +17,30 @@ class SentMemesCollectionView : UICollectionViewController {
         return (UIApplication.shared.delegate as! AppDelegate).memes
     }
     override func viewDidLoad() {
-        
+        print("memes are : \(memes.count)")
+        collectionView?.reloadData()
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.memes.count
+        return memes.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let meme = self.memes[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MemeCell", for: indexPath) as! MemeCollectionViewCell
-        
+        cell.memeCellImageView?.contentMode = UIViewContentMode.scaleToFill
         cell.memeCellImageView?.image = meme.memedImage
-        
         return cell
     }
+    
     @IBAction func MemeEditor(_ sender: AnyObject) {
         let controller = self.storyboard?.instantiateViewController(withIdentifier: "MemeEditorViewController") as! MemeEditorViewController
         present(controller, animated: true, completion: nil)
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let controller = self.storyboard?.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
+        controller.meme = self.memes[indexPath.row]
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
 }
