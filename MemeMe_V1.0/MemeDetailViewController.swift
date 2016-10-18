@@ -11,13 +11,7 @@ import UIKit
 
 class MemeDetailViewController : UIViewController {
     
-    var memes: [Meme] {
-        return (UIApplication.shared.delegate as! AppDelegate).memes
-    }
-    
     var meme : Meme!
-    
-    var index : IndexPath?
     
     @IBOutlet weak var detailImagePickerView: UIImageView!
     
@@ -25,6 +19,7 @@ class MemeDetailViewController : UIViewController {
         super.viewWillAppear(true)
         self.detailImagePickerView.contentMode = UIViewContentMode.scaleAspectFit
         self.detailImagePickerView.image = meme.memedImage
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     override func viewDidLoad() {

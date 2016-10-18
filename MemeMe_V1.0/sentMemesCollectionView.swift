@@ -12,12 +12,24 @@ import UIKit
 class SentMemesCollectionView : UICollectionViewController {
     
     @IBOutlet weak var addMeme: UIBarButtonItem!
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout?
     
     var memes: [Meme] {
         return (UIApplication.shared.delegate as! AppDelegate).memes
     }
     override func viewDidLoad() {
         print("memes are : \(memes.count)")
+        collectionView?.reloadData()
+        let space : CGFloat = 2.0
+        let hDimension = (self.view.frame.size.height - (2 * space)) / 6.0
+        let wDimension = (self.view.frame.size.width - (2 * space)) / 3.0
+        
+        flowLayout?.minimumInteritemSpacing = space
+        flowLayout?.minimumLineSpacing = space
+        flowLayout?.itemSize = CGSize(width: wDimension, height: hDimension)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         collectionView?.reloadData()
     }
 
