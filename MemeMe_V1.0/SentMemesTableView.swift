@@ -44,11 +44,11 @@ class SentMemesTableView : UITableViewController {
         present(controller, animated: true, completion: nil)
     }
     
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         let object = UIApplication.shared.delegate
         let appDelegate = object as! AppDelegate
         if (editingStyle == UITableViewCellEditingStyle.delete) {
