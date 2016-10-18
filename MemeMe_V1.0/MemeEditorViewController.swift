@@ -110,24 +110,20 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         dismiss(animated: true, completion: nil)
     }
     
-    func pickAnImage(type : Int) {
+    func pickAnImage(type : UIImagePickerControllerSourceType) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         present(imagePicker, animated: true, completion: nil)
-        if type == 1 {
-            imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        imagePicker.sourceType = type
         }
-        if type == 2 {
-        imagePicker.sourceType = UIImagePickerControllerSourceType.camera
-        }
-    }
-    
+
+
     @IBAction func pickAnImageFromCamera(_ sender: AnyObject) {
-        pickAnImage(type: 2)
+        pickAnImage(type: .camera)
     }
     
     @IBAction func pickAnImageFromAlbum(_ sender: AnyObject) {
-        pickAnImage(type: 1)
+        pickAnImage(type: .photoLibrary)
     }
     
     @IBAction func cancel(_ sender: AnyObject) {
