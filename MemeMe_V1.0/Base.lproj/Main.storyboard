@@ -29,7 +29,7 @@
         <scene sceneID="FSk-6X-RBS">
             <objects>
                 <navigationController title="Collection" id="7wX-dW-eDw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="OIW-UK-nS3"/>
+                    <tabBarItem key="tabBarItem" title="" image="CollectionView" id="OIW-UK-nS3"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="R9y-GR-RvL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -102,7 +102,7 @@
         <scene sceneID="2gg-Y8-kuI">
             <objects>
                 <navigationController title="Table" id="KZ6-N1-2QA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="vGS-bS-Q4r"/>
+                    <tabBarItem key="tabBarItem" title="" image="TableView" id="vGS-bS-Q4r"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="jYJ-Xm-pgQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -124,7 +124,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MemeCell" id="mvO-eW-mpG">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MemeCells" id="mvO-eW-mpG">
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mvO-eW-mpG" id="sq8-Va-tk9">
@@ -152,6 +152,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5pf-mG-zJY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="236" y="277"/>
+        </scene>
+        <!--Meme Detail View Controller-->
+        <scene sceneID="MjE-wg-c3E">
+            <objects>
+                <viewController storyboardIdentifier="MemeDetailViewController" id="eiQ-hf-Ajm" customClass="MemeDetailViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="M2G-He-iB3"/>
+                        <viewControllerLayoutGuide type="bottom" id="hNf-zK-FNv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3RD-IQ-ym4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fdl-Di-g7Z"/>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <constraints>
+                            <constraint firstItem="fdl-Di-g7Z" firstAttribute="centerX" secondItem="3RD-IQ-ym4" secondAttribute="centerX" id="AHM-bL-yik"/>
+                            <constraint firstItem="fdl-Di-g7Z" firstAttribute="centerY" secondItem="3RD-IQ-ym4" secondAttribute="centerY" id="Khq-xh-ZM4"/>
+                            <constraint firstItem="fdl-Di-g7Z" firstAttribute="bottom" secondItem="hNf-zK-FNv" secondAttribute="top" id="UYZ-dY-o4r"/>
+                            <constraint firstItem="fdl-Di-g7Z" firstAttribute="leading" secondItem="3RD-IQ-ym4" secondAttribute="leadingMargin" id="jTv-1r-Oyu"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="detailImagePickerView" destination="fdl-Di-g7Z" id="O3h-O2-Hi8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n3O-Uw-zi8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1173.5999999999999" y="-188.45577211394306"/>
         </scene>
         <!--MemeEditorViewController-->
         <scene sceneID="tne-QT-ifu">
@@ -213,7 +243,7 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
                             <constraint firstItem="iPw-K0-H0l" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="3BZ-1d-kAK"/>
                             <constraint firstItem="iPw-K0-H0l" firstAttribute="bottom" secondItem="QHd-XN-9YT" secondAttribute="bottom" id="4Mo-fY-P4Z"/>
@@ -246,7 +276,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1039" y="-119"/>
+            <point key="canvasLocation" x="2095" y="-188"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="CollectionView" width="30" height="30"/>
+        <image name="TableView" width="30" height="30"/>
+    </resources>
 </document>
